@@ -803,7 +803,7 @@ ribbon:
 
 
 
-安装方式可以参考课前资料《Nacos安装指南.md》
+安装方式可以参考课前资料《[Nacos安装指南.md](https://github.com/qingdog/cloud/blob/master/day01-SpringCloud01/资料/Nacos安装指南.md)》
 
 
 
