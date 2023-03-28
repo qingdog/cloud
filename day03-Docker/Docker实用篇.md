@@ -261,7 +261,7 @@ DockerHub：
 
 ## 1.4.安装Docker
 
-企业部署一般都是采用Linux操作系统，而其中又数CentOS发行版占比最多，因此我们在CentOS下安装Docker。参考课前资料中的文档：
+企业部署一般都是采用Linux操作系统，而其中又数CentOS发行版占比最多，因此我们在CentOS下安装Docker。参考课前资料中的文档：《[Centos7安装Docker](https://github.com/qingdog/cloud/blob/master/day03-Docker/资料/Centos7安装Docker.md)》
 
 ![image-20210731155002425](assets/image-20210731155002425.png)
 
@@ -990,7 +990,7 @@ DockerCompose的详细语法参考官网：https://docs.docker.com/compose/compo
 
 ## 4.2.安装DockerCompose
 
-参考课前资料
+参考课前资料《[Centos7安装Docker](https://github.com/qingdog/cloud/blob/master/day03-Docker/资料/Centos7安装Docker.md#2centos7安装dockercompose)》
 
 
 
@@ -1174,7 +1174,7 @@ docker-compose up -d
 
 ## 5.1.搭建私有镜像仓库
 
-参考课前资料《CentOS7安装Docker.md》
+参考课前资料《[CentOS7安装Docker.md](https://github.com/qingdog/cloud/blob/master/day03-Docker/资料/Centos7安装Docker.md#3docker镜像仓库)》
 
 
 

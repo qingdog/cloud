@@ -139,6 +139,13 @@ Linux下需要通过命令下载：
 curl -L https://github.com/docker/compose/releases/download/1.23.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 ```
 
+> - `curl`是一个命令行工具，用于在终端中从互联网上获取数据。它可以通过指定URL来下载文件并将其输出到控制台，或者将文件保存到本地文件系统中。
+> - `-L`选项表示当下载的文件重定向时，curl会自动跟随重定向。
+> - `https://github.com/docker/compose/releases/download/1.23.1/docker-compose-`是Docker Compose二进制文件的URL地址，后面的命令将动态添加操作系统名称和架构。
+> - `uname -s`命令返回当前操作系统的名称，例如Linux或Darwin（MacOS的核心）。它将被添加到URL中以指定正确的二进制文件版本。
+> - `uname -m`命令返回当前系统的处理器架构，例如x86_64或armv7l。它也将被添加到URL中以指定正确的二进制文件版本。
+> - `> /usr/local/bin/docker-compose`表示将下载的文件重定向并保存到`/usr/local/bin/docker-compose`路径中。由于`/usr/local/bin`是在Unix和Linux系统中存储二进制文件的标准目录之一，因此这个命令可以使`docker-compose`命令在系统上全局可用。请注意，此命令需要root权限才能执行成功。
+
 如果下载速度较慢，或者下载失败，可以使用课前资料提供的docker-compose文件：
 
 ![image-20210417133020614](assets/image-20210417133020614.png)
