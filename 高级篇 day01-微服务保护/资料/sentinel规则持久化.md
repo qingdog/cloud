@@ -165,3 +165,5 @@ java -jar -Dnacos.addr=localhost:8848 sentinel-dashboard.jar
 
 
 
+> 左侧设置配置持久化到nacos
+
