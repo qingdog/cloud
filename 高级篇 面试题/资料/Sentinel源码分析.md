@@ -25,6 +25,8 @@ Sentinel实现限流、隔离、降级、熔断等功能，本质要做的就是
 
 其工作流如图：
 
+[Sentinel 核心类解析]: (https://github.com/alibaba/Sentinel/wiki/Sentinel-核心类解析)
+
 ![image-20210925092845529](assets/image-20210925092845529.png)
 
 
@@ -412,7 +414,9 @@ protected static Context trueEnter(String name, String origin) {
 }
 ```
 
+草图执行流程
 
+![image-20230418202844950](./assets/image-20230418202844950.png)
 
 # 2.ProcessorSlotChain执行流程
 

@@ -83,7 +83,6 @@ spring:
     publisher-returns: true
     template:
       mandatory: true
-   
 ```
 
 说明：
@@ -153,9 +152,10 @@ public void testSendMessage2SimpleQueue() throws InterruptedException {
             }else{
                 // 3.2.nack，消息失败
                 log.error("消息发送失败, ID:{}, 原因{}",correlationData.getId(), result.getReason());
+                // 重发消息
             }
         },
-        ex -> log.error("消息发送异常, ID:{}, 原因{}",correlationData.getId(),ex.getMessage())
+        ex -> log.error("消息发送异常, ID:{}, 原因{}",correlationData.getId(),ex.getMessage())// 重发消息
     );
     // 4.发送消息
     rabbitTemplate.convertAndSend("task.direct", "task", message, correlationData);
@@ -269,11 +269,11 @@ RabbitMQ是**阅后即焚**机制，RabbitMQ确认消息被消费者消费后会
 
 而SpringAMQP则允许配置三种确认模式：
 
-•manual：手动ack，需要在业务代码结束后，调用api发送ack。
+* manual：手动ack，需要在业务代码结束后，调用api发送ack。
 
-•auto：自动ack，由spring监测listener代码是否出现异常，没有异常则返回ack；抛出异常则返回nack
+* auto：自动ack，由spring监测listener代码是否出现异常，没有异常则返回ack；抛出异常则返回nack
 
-•none：关闭ack，MQ假定消费者获取消息后会成功处理，因此消息投递后立即被删除
+* none：关闭ack，MQ假定消费者获取消息后会成功处理，因此消息投递后立即被删除
 
 
 
@@ -768,7 +768,7 @@ public void testTTLMsg() {
 
 ### 2.3.1.安装DelayExchange插件
 
-参考课前资料：
+参考课前资料：[《RabbitMQ部署指南.md#2安装delayexchange插件》](https://github.com/qingdog/cloud/blob/master/高级篇%20day05-MQ高级/资料/RabbitMQ部署指南.md#2安装delayexchange插件)
 
 ![image-20210718193409812](assets/image-20210718193409812.png)
 
@@ -814,9 +814,9 @@ DelayExchange需要将一个交换机声明为delayed类型。当我们发送消
 
 延迟队列插件的使用步骤包括哪些？
 
-•声明一个交换机，添加delayed属性为true
+* 声明一个交换机，添加delayed属性为true
 
-•发送消息时，添加x-delay头，值为超时时间
+* 发送消息时，添加x-delay头，值为超时时间
 
 
 
@@ -896,7 +896,7 @@ rabbitmqctl set_policy Lazy "^lazy-queue$" '{"queue-mode":"lazy"}' --apply-to qu
 惰性队列的优点有哪些？
 
 - 基于磁盘存储，消息上限高
-- 没有间歇性的page-out，性能比较稳定
+- 没有间歇性的page-out（扇出），性能比较稳定
 
 惰性队列的缺点有哪些？
 
@@ -915,9 +915,9 @@ rabbitmqctl set_policy Lazy "^lazy-queue$" '{"queue-mode":"lazy"}' --apply-to qu
 
 RabbitMQ的是基于Erlang语言编写，而Erlang又是一个面向并发的语言，天然支持集群模式。RabbitMQ的集群有两种模式：
 
-•**普通集群**：是一种分布式集群，将队列分散到集群的各个节点，从而提高整个集群的并发能力。
+* **普通集群**：是一种分布式集群，将队列分散到集群的各个节点，从而提高整个集群的并发能力。
 
-•**镜像集群**：是一种主从集群，普通集群的基础上，添加了主从备份功能，提高集群的数据可用性。
+* **镜像集群**：是一种主从集群，普通集群的基础上，添加了主从备份功能，提高集群的数据可用性。
 
 
 
@@ -945,7 +945,7 @@ RabbitMQ的是基于Erlang语言编写，而Erlang又是一个面向并发的语
 
 ### 4.2.2.部署
 
-参考课前资料：《RabbitMQ部署指南.md》
+参考课前资料：[《RabbitMQ部署指南.md#3集群部署》](https://github.com/qingdog/cloud/blob/master/高级篇%20day05-MQ高级/资料/RabbitMQ部署指南.md#3集群部署)
 
 
 
@@ -975,7 +975,7 @@ RabbitMQ的是基于Erlang语言编写，而Erlang又是一个面向并发的语
 
 ### 4.3.2.部署
 
-参考课前资料：《RabbitMQ部署指南.md》
+参考课前资料：[《RabbitMQ部署指南.md#4镜像模式》](https://github.com/qingdog/cloud/blob/master/高级篇%20day05-MQ高级/资料/RabbitMQ部署指南.md#4镜像模式)
 
 
 
@@ -995,7 +995,7 @@ RabbitMQ的是基于Erlang语言编写，而Erlang又是一个面向并发的语
 
 ### 4.4.2.部署
 
-参考课前资料：《RabbitMQ部署指南.md》
+参考课前资料：[《RabbitMQ部署指南.md#5仲裁队列》](https://github.com/qingdog/cloud/blob/master/高级篇%20day05-MQ高级/资料/RabbitMQ部署指南.md#5仲裁队列)
 
 
 
